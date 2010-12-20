@@ -19,20 +19,20 @@ A file size field, stored as BigInteger and rendered with units in Bytes (KB, MB
 
 Examples
 --------
+With a model like ::
 
-With a model like :
 
     class Data(models.Model):
         path = models.FilePathField()
         size = FileSizeField()
 
-In templates :
+In templates ::
 
     {% load sizefieldtags %}
     
     {{ data.size|filesize }}
     
-    *will render 12.3KB*
+*will render 12.3KB (for example)*
 
 The model form will have a TextInput, which renders the 
 value with units, and accepts values with or without units.
