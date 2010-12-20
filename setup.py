@@ -4,16 +4,17 @@ from setuptools import setup, find_packages
 
 setup(name         = 'django-sizefield',
       version      = '0.1',
-      license      = 'BSD',
+      license      = 'LGPL',
       description  = 'A model field to store a file size, whose edition and display shows units.',
       author       = "Mathieu Leplatre",
       author_email = "contact@mathieu-leplatre.info",
       url          = "http://code.mathieu-leplatre.info/projects/show/django-sizefield",
+      download_url = "http://code.mathieu-leplatre.info/repositories/show/django-sizefield",
       long_description = """\
 django-sizefield
 ----------------
 
-A file size field, stored as BigInteger and rendered with units (KB, MB, ...)
+A file size field, stored as BigInteger and rendered with units in Bytes (KB, MB, ...)
 
 
 Examples
@@ -36,13 +37,9 @@ In templates :
 The model form will have a TextInput, which renders the 
 value with units, and accepts values with or without units.
 """,
-
       provides     = ['sizefield'],
       packages     = find_packages(),
-      package_data = {},
-      scripts      = [""],
       platforms    = ('any',),
-      requires     = [''],
       keywords     = ['django', 'field', 'filesize'],
       classifiers  = ['Programming Language :: Python :: 2.5',
                       'Operating System :: OS Independent',
