@@ -2,6 +2,10 @@
 # -*- coding: utf8 -*-
 from setuptools import setup, find_packages
 
+f = open('README')
+readme = f.read()
+f.close()
+
 setup(name         = 'django-sizefield',
       version      = '0.1',
       license      = 'LGPL',
@@ -10,33 +14,7 @@ setup(name         = 'django-sizefield',
       author_email = "contact@mathieu-leplatre.info",
       url          = "http://code.mathieu-leplatre.info/projects/show/django-sizefield",
       download_url = "http://code.mathieu-leplatre.info/repositories/show/django-sizefield",
-      long_description = """\
-django-sizefield
-----------------
-
-A file size field, stored as BigInteger and rendered with units in Bytes (KB, MB, ...)
-
-
-Examples
---------
-With a model like ::
-
-
-    class Data(models.Model):
-        path = models.FilePathField()
-        size = FileSizeField()
-
-In templates ::
-
-    {% load sizefieldtags %}
-    
-    {{ data.size|filesize }}
-    
-*will render 12.3KB (for example)*
-
-The model form will have a TextInput, which renders the 
-value with units, and accepts values with or without units.
-""",
+      long_description = readme,
       provides     = ['sizefield'],
       packages     = find_packages(),
       platforms    = ('any',),
