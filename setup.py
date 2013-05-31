@@ -7,7 +7,7 @@ readme = f.read()
 f.close()
 
 setup(name         = 'django-sizefield',
-      version      = '0.1',
+      version      = '0.2',
       license      = 'LGPL',
       description  = 'A model field to store a file size, whose edition and display shows units.',
       author       = "Mathieu Leplatre",
@@ -17,7 +17,6 @@ setup(name         = 'django-sizefield',
       long_description = readme,
       provides     = ['sizefield'],
       packages     = find_packages(),
-      platforms    = ('any',),
       keywords     = ['django', 'field', 'filesize'],
       classifiers  = ['Programming Language :: Python :: 2.5',
                       'Operating System :: OS Independent',
