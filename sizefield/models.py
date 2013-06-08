@@ -24,3 +24,10 @@ class FileSizeField(models.BigIntegerField):
             return parse_size(value)
         except ValueError:
             raise exceptions.ValidationError(self.error_messages['invalid'])
+
+
+try:
+    from south.modelsinspector import add_introspection_rules
+    add_introspection_rules([], ["^sizefield\.models\.FileSizeField"])
+except ImportError:
+    pass
