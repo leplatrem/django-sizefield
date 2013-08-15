@@ -3,7 +3,7 @@ from django import forms
 from django.core import exceptions
 from django.utils.translation import ugettext as _
 
-from sizefield import parse_size
+from sizefield.utils import parse_size
 from sizefield.widgets import FileSizeWidget
 
 
@@ -15,16 +15,16 @@ class FileSizeField(models.BigIntegerField):
 
     def formfield(self, **kwargs):
         kwargs['widget'] = FileSizeWidget
-        kwargs['form_class'] = forms.CharField
-        #return super(FileSizeField, self).formfield(**defaults)  # Fails :/ because of max_value/min_value
-        return  models.Field.formfield(self, **kwargs)
+        kwargs['error_messages'] = self.default_error_messages
+        return super(FileSizeField, self).formfield(**kwargs)
 
     def to_python(self, value):
+        if value is None:
+            return None
         try:
             return parse_size(value)
         except ValueError:
             raise exceptions.ValidationError(self.error_messages['invalid'])
-
 
 try:
     from south.modelsinspector import add_introspection_rules

@@ -1,10 +1,10 @@
 from django import template
 
-from sizefield import render_size
+from sizefield.utils import filesizeformat
 
 
 register = template.Library()
 
 @register.filter(name='filesize')
 def filesize(value, decimals=1):
-    return render_size(value, decimals)
+    return filesizeformat(value, decimals)
