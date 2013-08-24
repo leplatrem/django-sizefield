@@ -41,9 +41,6 @@ class ParseRenderTest(TestCase):
         self.assertEqual('1.0000xxx KB', filesizeformat(1024, decimals=4))
 
     def test_parse(self):
-        from sizefield import utils
-        utils.SIZEFIELD_FORMAT = '{value} {unit}'
-
         # Usual case
         self.assertEqual(123, parse_size('123'))
         self.assertEqual(123, parse_size('123B'))

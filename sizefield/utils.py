@@ -47,7 +47,7 @@ def filesizeformat(bytes, decimals = 1):
             unit = prev_unit[0]
             break
 
-    if not value:
+    if value is None:
         value = filesize_number_format(bytes / units_list[len_unints_list][1])
         unit = units_list[len_unints_list][0]
 
