@@ -4,7 +4,12 @@ from sizefield.utils import filesizeformat, parse_size
 
 
 class ParseRenderTest(TestCase):
+
     def test_render(self):
+
+        from sizefield import utils
+        utils.SIZEFIELD_FORMAT = '{value} {unit}'
+
         # Usual case
         self.assertEqual('123.0 B', filesizeformat(123))
         self.assertEqual('123.0 B', filesizeformat('123'))
@@ -27,7 +32,18 @@ class ParseRenderTest(TestCase):
         self.assertEqual('1.000 KB', filesizeformat(1024, decimals=3))
         self.assertEqual('1.0000 KB', filesizeformat(1024, decimals=4))
 
+        # test SIZEFIELD_FORMAT
+        utils.SIZEFIELD_FORMAT = '{value}xxx {unit}'
+        self.assertEqual('1xxx KB', filesizeformat(1024, decimals=0))
+        self.assertEqual('1.0xxx KB', filesizeformat(1024, decimals=1))
+        self.assertEqual('1.00xxx KB', filesizeformat(1024, decimals=2))
+        self.assertEqual('1.000xxx KB', filesizeformat(1024, decimals=3))
+        self.assertEqual('1.0000xxx KB', filesizeformat(1024, decimals=4))
+
     def test_parse(self):
+        from sizefield import utils
+        utils.SIZEFIELD_FORMAT = '{value} {unit}'
+
         # Usual case
         self.assertEqual(123, parse_size('123'))
         self.assertEqual(123, parse_size('123B'))
