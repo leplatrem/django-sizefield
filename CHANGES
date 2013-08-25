@@ -1,0 +1,23 @@
+=========
+CHANGELOG
+=========
+
+0.4 (unreleased)
+================
+
+- Complete refactor by @perez
+
+0.3 (2013-06-08)
+================
+
+- South support by @meteozond
+
+0.2 (2013-05-31)
+================
+
+- Petabytes support by @meteozond
+
+0.1 (2011-01-04)
+================
+
+- Initial working version.
