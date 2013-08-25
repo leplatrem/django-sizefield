@@ -5,7 +5,7 @@ from sizefield.utils import filesizeformat, parse_size
 
 
 class FileSizeWidget(forms.TextInput):
-    
+
     def render(self, name, value, attrs=None):
         if value:
             value = filesizeformat(value)
@@ -17,7 +17,7 @@ class FileSizeWidget(forms.TextInput):
         of this widget. Returns None if it's not provided.
         """
         value = super(FileSizeWidget, self).value_from_datadict(data, files, name)
-        if value not in EMPTY_VALUES :
+        if value not in EMPTY_VALUES:
             try:
                 return parse_size(value)
             except ValueError:

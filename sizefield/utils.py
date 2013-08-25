@@ -13,16 +13,16 @@ SIZEFIELD_FORMAT = getattr(settings, 'SIZEFIELD_FORMAT', '{value}{unit}')
 
 file_size_re = re.compile(r'^(?P<value>[0-9\.]+?)\s*(?P<unit>(B{0,1}|[KMGTP]{1}B{1})?)$', re.IGNORECASE)
 FILESIZE_UNITS = {
-    'B' : 1,
-    'KB' : 1<<10,
-    'MB' : 1<<20,
-    'GB' : 1<<30,
-    'TB' : 1<<40,
-    'PB' : 1<<50,
-    }
+    'B': 1,
+    'KB': 1 << 10,
+    'MB': 1 << 20,
+    'GB': 1 << 30,
+    'TB': 1 << 40,
+    'PB': 1 << 50,
+}
 
 
-def filesizeformat(bytes, decimals = 1):
+def filesizeformat(bytes, decimals=1):
     """
     Formats the value like a 'human-readable' file size (i.e. 13 KB, 4.1 MB,
     102 bytes, etc).
@@ -31,7 +31,7 @@ def filesizeformat(bytes, decimals = 1):
 
     try:
         bytes = float(bytes)
-    except (TypeError,ValueError,UnicodeDecodeError):
+    except (TypeError, ValueError, UnicodeDecodeError):
         raise ValueError
 
     filesize_number_format = lambda value: formats.number_format(round(value, decimals), decimals)
@@ -42,7 +42,7 @@ def filesizeformat(bytes, decimals = 1):
     len_unints_list = len(units_list)
     for i in xrange(1, len_unints_list):
         if bytes < units_list[i][1]:
-            prev_unit = units_list[i-1]
+            prev_unit = units_list[i - 1]
             value = filesize_number_format(bytes / prev_unit[1])
             unit = prev_unit[0]
             break
@@ -51,7 +51,8 @@ def filesizeformat(bytes, decimals = 1):
         value = filesize_number_format(bytes / units_list[len_unints_list][1])
         unit = units_list[len_unints_list][0]
 
-    return SIZEFIELD_FORMAT.format(value = value, unit = unit)
+    return SIZEFIELD_FORMAT.format(value=value, unit=unit)
+
 
 def parse_size(size):
     """
@@ -63,7 +64,7 @@ def parse_size(size):
     r = file_size_re.match(size)
     if r:
         value = float(r.group('value'))
-        unit  = r.group('unit').upper() or 'B'
+        unit = r.group('unit').upper() or 'B'
         return int(value * FILESIZE_UNITS[unit])
 
     # Regex pattern was not matched

@@ -1,5 +1,4 @@
 from django.db import models
-from django import forms
 from django.core import exceptions
 from django.utils.translation import ugettext as _
 
