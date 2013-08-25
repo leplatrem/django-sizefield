@@ -1,0 +1,31 @@
+language: python
+
+python:
+  - 2.7
+
+env:
+  - DJANGO_VERSION=1.4.5
+  - DJANGO_VERSION=1.5.2
+
+install:
+   # This is a dependency of our Django test script
+ - pip install argparse --use-mirrors
+
+ - pip install -q Django==$DJANGO_VERSION --use-mirrors
+
+ - pip install coverage
+
+ - pip install flake8 --use-mirrors
+
+ - python setup.py develop
+
+before_script:
+ - flake8 --ignore=E501 sizefield
+
+script:
+ - python quicktest.py sizefield
+ - coverage run quicktest.py sizefield
+
+after_success:
+ - pip install coveralls
+ - coveralls
