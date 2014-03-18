@@ -1,6 +1,7 @@
 from django.test import TestCase
 
-from sizefield.utils import filesizeformat, parse_size
+from .utils import filesizeformat, parse_size
+from .templatetags.sizefieldtags import filesize
 
 
 class ParseRenderTest(TestCase):
@@ -71,3 +72,9 @@ class ParseRenderTest(TestCase):
         self.assertRaises(ValueError, parse_size, ('12 K'))
         # Already rendered
         self.assertEqual(123, parse_size(123))
+
+
+class TemplateTagTest(TestCase):
+
+    def test_tag_should_support_none_values(self):
+        self.assertEqual('', filesize(None))
