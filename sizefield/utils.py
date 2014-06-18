@@ -11,7 +11,7 @@ from django.conf import settings
 
 SIZEFIELD_FORMAT = getattr(settings, 'SIZEFIELD_FORMAT', '{value}{unit}')
 
-file_size_re = re.compile(r'^(?P<value>[0-9\.]+?)\s*(?P<unit>(B{0,1}|[KMGTP]{1}B{1})?)$', re.IGNORECASE)
+file_size_re = re.compile(r'^(?P<value>[0-9\.,]+?)\s*(?P<unit>(B{0,1}|[KMGTP]{1}B{1})?)$', re.IGNORECASE)
 FILESIZE_UNITS = {
     'B': 1,
     'KB': 1 << 10,
@@ -63,7 +63,8 @@ def parse_size(size):
 
     r = file_size_re.match(size)
     if r:
-        value = float(r.group('value'))
+        clean_value = r.group("value").replace(",", ".")
+        value = float(clean_value)
         unit = r.group('unit').upper() or 'B'
         return int(value * FILESIZE_UNITS[unit])
 
