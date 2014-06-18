@@ -2,8 +2,8 @@
 CHANGELOG
 =========
 
-0.4.1 (unreleased)
-==================
+0.5 (2014-06-18)
+================
 
 - Fix template tag not support None values (fixes #4)
 - Support comma notation for float values (fixes #5)
