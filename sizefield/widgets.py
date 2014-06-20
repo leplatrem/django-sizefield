@@ -8,7 +8,10 @@ class FileSizeWidget(forms.TextInput):
 
     def render(self, name, value, attrs=None):
         if value:
-            value = filesizeformat(value)
+            try:
+                value = filesizeformat(value)
+            except ValueError:
+                pass
         return super(FileSizeWidget, self).render(name, value, attrs)
 
     def value_from_datadict(self, data, files, name):
