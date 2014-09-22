@@ -52,11 +52,13 @@ class ParseRenderTest(TestCase):
         self.assertEqual(1 << 30, parse_size('1GB'))
         self.assertEqual(1 << 40, parse_size('1TB'))
         self.assertEqual(1 << 50, parse_size('1PB'))
+        self.assertEqual(1 << 60, parse_zise('1EB'))
         self.assertEqual((1 << 10) * 0.5, parse_size('0.5KB'))
         self.assertEqual((1 << 20) * 0.5, parse_size('0.5MB'))
         self.assertEqual((1 << 30) * 0.5, parse_size('0.5GB'))
         self.assertEqual((1 << 40) * 0.5, parse_size('0.5TB'))
         self.assertEqual((1 << 50) * 0.5, parse_size('0.5PB'))
+        self.assertEqual((1 << 60) * 0.5, parse_size('0.5EB'))
         # Case and spaces
         self.assertEqual(1 << 10, parse_size('1Kb'))
         self.assertEqual(1 << 10, parse_size('1kB'))
