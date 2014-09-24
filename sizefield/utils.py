@@ -11,7 +11,7 @@ from django.conf import settings
 
 SIZEFIELD_FORMAT = getattr(settings, 'SIZEFIELD_FORMAT', '{value}{unit}')
 
-file_size_re = re.compile(r'^(?P<value>[0-9\.,]+?)\s*(?P<unit>(B{0,1}|[KMGTP]{1}B{1})?)$', re.IGNORECASE)
+file_size_re = re.compile(r'^(?P<value>[0-9\.,]+?)\s*(?P<unit>(B{0,1}|[KMGTPE]{1}B{1})?)$', re.IGNORECASE)
 FILESIZE_UNITS = {
     'B': 1,
     'KB': 1 << 10,
@@ -19,6 +19,7 @@ FILESIZE_UNITS = {
     'GB': 1 << 30,
     'TB': 1 << 40,
     'PB': 1 << 50,
+    'EB': 1 << 60,
 }
 
 
