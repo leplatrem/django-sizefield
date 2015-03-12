@@ -49,8 +49,8 @@ def filesizeformat(bytes, decimals=1):
             break
 
     if value is None:
-        value = filesize_number_format(bytes / units_list[len_unints_list][1])
-        unit = units_list[len_unints_list][0]
+        value = filesize_number_format(bytes / units_list[-1][1])
+        unit = units_list[-1][0]
 
     return SIZEFIELD_FORMAT.format(value=value, unit=unit)
 
