@@ -5,7 +5,8 @@ CHANGELOG
 0.7 (unreleased)
 ================
 
-- Nothing changed yet.
+- Add Zetta and Yotta support (thanks @meteozond)
+- Fix bug with big values (fixes #8, thanks @meteozond)
 
 
 0.6 (2014-09-25)
