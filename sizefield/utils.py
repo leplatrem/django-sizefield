@@ -15,7 +15,6 @@ DEFAULT_BYTE_SUFFIX = 'B'
 BINARY_BYTE_SUFFIX = 'iB'
 UNIT_FORMAT = '{unit_size}{byte_suffix}'
 
-#file_size_re = re.compile(r'^(?P<value>[0-9\.,]+?)\s*(?P<unit>(B{0,1}|[KMGTPEZY]{1}i{0,1}B{1})?)$', re.IGNORECASE)
 file_size_re = re.compile(r'^(?P<value>[0-9\.,]+?)\s*(?P<unit_size>[KMGTPEZY]{0,1})(?P<byte_suffix>i{0,1}B{1})?$', re.IGNORECASE)
 FILESIZE_UNITS_BINARY = {
     '': 1,
