@@ -7,7 +7,7 @@ register = template.Library()
 
 
 @register.filter(name='filesize')
-def filesize(value, decimals=1):
+def filesize(value, decimals=1, binary=True, ambiguous_suffix=True):
     if value is None:
         return ''
-    return filesizeformat(value, decimals)
+    return filesizeformat(value, decimals, binary, ambiguous_suffix)
