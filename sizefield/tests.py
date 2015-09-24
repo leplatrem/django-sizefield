@@ -43,8 +43,8 @@ class ParseRenderTest(TestCase):
 
         # Unambiguous unit format
         utils.SIZEFIELD_FORMAT = '{value} {unit}'
-        self.assertEqual('1000.0 iB', filesizeformat(1000, ambiguous_suffix=False))
-        self.assertEqual('1023.0 iB', filesizeformat(1023, ambiguous_suffix=False))
+        self.assertEqual('1000.0 B', filesizeformat(1000, ambiguous_suffix=False))
+        self.assertEqual('1023.0 B', filesizeformat(1023, ambiguous_suffix=False))
         self.assertEqual('1.0 KiB', filesizeformat(1024, ambiguous_suffix=False))
         self.assertEqual('1.0 MiB', filesizeformat(1024 * 1024, ambiguous_suffix=False))
         self.assertEqual('1.0 GiB', filesizeformat(1024 * 1024 * 1024, ambiguous_suffix=False))

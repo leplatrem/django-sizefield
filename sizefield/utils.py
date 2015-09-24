@@ -77,6 +77,9 @@ def filesizeformat(bytes, decimals=1, binary=True, ambiguous_suffix=True):
         value = filesize_number_format(bytes / units_list[-1][1])
         unit_size = units_list[-1][0]
 
+    if unit_size == '':
+        byte_suffix = DEFAULT_BYTE_SUFFIX
+
     unit = UNIT_FORMAT.format(unit_size=unit_size, byte_suffix=byte_suffix)
     return SIZEFIELD_FORMAT.format(value=value, unit=unit)
 
