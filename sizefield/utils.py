@@ -10,8 +10,10 @@ from django.conf import settings
 
 
 SIZEFIELD_FORMAT = getattr(settings, 'SIZEFIELD_FORMAT', '{value}{unit}')
+
 SIZEFIELD_IS_BINARY = getattr(settings, 'SIZEFIELD_IS_BINARY', True)
 SIZEFIELD_AMBIGUOUS_SUFFIX = getattr(settings, 'SIZEFIELD_AMBIGUOUS_SUFFIX', True)
+SIZEFIELD_ASSUME_BINARY = getattr(settings, 'SIZEFIELD_ASSUME_BINARY', SIZEFIELD_IS_BINARY and SIZEFIELD_AMBIGUOUS_SUFFIX)
 
 DEFAULT_BYTE_SUFFIX = 'B'
 BINARY_BYTE_SUFFIX = 'iB'
@@ -42,12 +44,17 @@ FILESIZE_UNITS_DECIMAL = {
 }
 
 
-def filesizeformat(bytes, decimals=1, binary=SIZEFIELD_IS_BINARY, ambiguous_suffix=SIZEFIELD_AMBIGUOUS_SUFFIX):
+def filesizeformat(bytes, decimals=1, is_binary=None, ambiguous_suffix=None):
     """
     Formats the value like a 'human-readable' file size (i.e. 13 KB, 4.1 MB,
     102 bytes, etc).
     Based on django.template.defaultfilters.filesizeformat
     """
+
+    if is_binary == None:
+        is_binary = SIZEFIELD_IS_BINARY
+    if ambiguous_suffix == None:
+        ambiguous_suffix = SIZEFIELD_AMBIGUOUS_SUFFIX
 
     try:
         bytes = float(bytes)
@@ -59,7 +66,7 @@ def filesizeformat(bytes, decimals=1, binary=SIZEFIELD_IS_BINARY, ambiguous_suff
     filesize_units = FILESIZE_UNITS_DECIMAL
     byte_suffix = DEFAULT_BYTE_SUFFIX
 
-    if binary:
+    if is_binary:
         filesize_units = FILESIZE_UNITS_BINARY
         if not ambiguous_suffix:
             byte_suffix = BINARY_BYTE_SUFFIX
@@ -86,12 +93,15 @@ def filesizeformat(bytes, decimals=1, binary=SIZEFIELD_IS_BINARY, ambiguous_suff
     return SIZEFIELD_FORMAT.format(value=value, unit=unit)
 
 
-def parse_size(size, assume_binary=SIZEFIELD_AMBIGUOUS_SUFFIX):
+def parse_size(size, assume_binary=None):
     """
     @rtype int
     """
     if isinstance(size, six.integer_types):
         return size
+
+    if assume_binary == None:
+        assume_binary = SIZEFIELD_ASSUME_BINARY
 
     r = file_size_re.match(size)
     if r:

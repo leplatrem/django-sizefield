@@ -54,19 +54,19 @@ class ParseRenderTest(TestCase):
         # Non binary
         utils.SIZEFIELD_FORMAT = '{value} {unit}'
         # Units
-        self.assertEqual('999.0 B', filesizeformat(999, binary=False))
-        self.assertEqual('1.0 KB', filesizeformat(1000, binary=False))
-        self.assertEqual('1.0 MB', filesizeformat(1000 * 1000, binary=False))
-        self.assertEqual('1.0 GB', filesizeformat(1000 * 1000 * 1000, binary=False))
-        self.assertEqual('500.0 KB', filesizeformat(1000 * 1000 * 0.5, binary=False))
-        self.assertEqual('305.5 KB', filesizeformat(1000 * 1000 * 0.3055, binary=False))
-        self.assertEqual('100.0 B', filesizeformat(100, binary=False, ambiguous_suffix=False))
+        self.assertEqual('999.0 B', filesizeformat(999, is_binary=False))
+        self.assertEqual('1.0 KB', filesizeformat(1000, is_binary=False))
+        self.assertEqual('1.0 MB', filesizeformat(1000 * 1000, is_binary=False))
+        self.assertEqual('1.0 GB', filesizeformat(1000 * 1000 * 1000, is_binary=False))
+        self.assertEqual('500.0 KB', filesizeformat(1000 * 1000 * 0.5, is_binary=False))
+        self.assertEqual('305.5 KB', filesizeformat(1000 * 1000 * 0.3055, is_binary=False))
+        self.assertEqual('100.0 B', filesizeformat(100, is_binary=False, ambiguous_suffix=False))
         # Decimals
-        self.assertEqual('1 KB', filesizeformat(1000, decimals=0, binary=False))
-        self.assertEqual('1.0 KB', filesizeformat(1000, decimals=1, binary=False))
-        self.assertEqual('1.00 KB', filesizeformat(1000, decimals=2, binary=False))
-        self.assertEqual('1.000 KB', filesizeformat(1000, decimals=3, binary=False))
-        self.assertEqual('1.0000 KB', filesizeformat(1000, decimals=4, binary=False))
+        self.assertEqual('1 KB', filesizeformat(1000, decimals=0, is_binary=False))
+        self.assertEqual('1.0 KB', filesizeformat(1000, decimals=1, is_binary=False))
+        self.assertEqual('1.00 KB', filesizeformat(1000, decimals=2, is_binary=False))
+        self.assertEqual('1.000 KB', filesizeformat(1000, decimals=3, is_binary=False))
+        self.assertEqual('1.0000 KB', filesizeformat(1000, decimals=4, is_binary=False))
 
     def test_parse(self):
         # Usual case
