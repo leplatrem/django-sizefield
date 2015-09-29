@@ -87,6 +87,7 @@ AUTHORS
     * Mathieu Leplatre <contact@mathieu-leplatre.info>
     * Alexander (@meteozond)
     * Tom Yam (@perez)
+    * William Tucker <william.tucker@stfc.ac.uk>
 
 
 =======
