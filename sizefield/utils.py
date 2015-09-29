@@ -47,7 +47,8 @@ FILESIZE_UNITS_DECIMAL = {
 def filesizeformat(bytes, decimals=1, is_binary=None, ambiguous_suffix=None):
     """
     Formats the value like a 'human-readable' file size (i.e. 13 KB, 4.1 MB,
-    102 bytes, etc).
+    102 bytes, etc). By default, the value is assumed to be binary with an
+    ambiguous suffix (as opposed to 13 KiB, 4.1 MiB, 102 B, etc).
     Based on django.template.defaultfilters.filesizeformat
     """
 
@@ -86,6 +87,7 @@ def filesizeformat(bytes, decimals=1, is_binary=None, ambiguous_suffix=None):
         value = filesize_number_format(bytes / units_list[-1][1])
         unit_size = units_list[-1][0]
 
+    # If the unit is only iB, use B instead
     if unit_size == '':
         byte_suffix = DEFAULT_BYTE_SUFFIX
 
@@ -112,6 +114,7 @@ def parse_size(size, assume_binary=None):
             clean_value = r.group("value").replace(",", ".")
             value = float(clean_value)
 
+            # Decide whether to parse as a binary or decimal size
             file_size_units = FILESIZE_UNITS_BINARY
             if not assume_binary and byte_suffix.upper() != BINARY_BYTE_SUFFIX.upper():
                 file_size_units = FILESIZE_UNITS_DECIMAL
