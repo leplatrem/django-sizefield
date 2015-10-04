@@ -5,7 +5,7 @@ CHANGELOG
 0.8 (unreleased)
 ================
 
-- Nothing changed yet.
+- Add support for Python3 (thanks @naxube)
 
 
 0.7 (2015-03-13)
