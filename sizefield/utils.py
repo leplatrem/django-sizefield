@@ -15,7 +15,7 @@ if sys.version_info >= (3, 0):
 
 SIZEFIELD_FORMAT = getattr(settings, 'SIZEFIELD_FORMAT', '{value}{unit}')
 
-file_size_re = re.compile(r'^(?P<value>[0-9\.,]+?)\s*(?P<unit>(B{0,1}|[KMGTPEZY]{1}B{1})?)$', re.IGNORECASE)
+file_size_re = re.compile(r'^(?P<value>[0-9\.,]+?)\s*(?P<unit>([KMGTPEZY]?B)?)$', re.IGNORECASE)
 FILESIZE_UNITS = {
     'B': 1,
     'KB': 1 << 10,
@@ -68,7 +68,7 @@ def parse_size(size):
     if isinstance(size, six.integer_types):
         return size
 
-    r = file_size_re.match(size)
+    r = file_size_re.match(size.strip())
     if r:
         clean_value = r.group("value").replace(",", ".")
         value = float(clean_value)

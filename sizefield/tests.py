@@ -66,6 +66,8 @@ class ParseRenderTest(TestCase):
         self.assertEqual(1 << 10, parse_size('1kB'))
         self.assertEqual(1 << 10, parse_size('1kb'))
         self.assertEqual(1 << 10, parse_size('1 kb'))
+        self.assertEqual(1 << 10, parse_size('      1kb'))
+        self.assertEqual(1 << 10, parse_size('1kb      '))
         self.assertEqual(1 << 10, parse_size('1      kb'))
         # Incorrect input
         self.assertRaises(ValueError, parse_size, (''))
