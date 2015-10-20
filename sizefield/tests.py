@@ -61,6 +61,9 @@ class ParseRenderTest(TestCase):
         self.assertEqual((1 << 60) * 0.5, parse_size('0.5EB'))
         self.assertEqual((1 << 70) * 0.5, parse_size('0.5ZB'))
         self.assertEqual((1 << 80) * 0.5, parse_size('0.5YB'))
+        # Unitless values
+        self.assertEqual(1 << 10, parse_size('1K'))
+        self.assertEqual(1 << 30, parse_size('1g'))
         # Case and spaces
         self.assertEqual(1 << 10, parse_size('1Kb'))
         self.assertEqual(1 << 10, parse_size('1kB'))
@@ -75,7 +78,6 @@ class ParseRenderTest(TestCase):
         self.assertRaises(ValueError, parse_size, ('12 HB'))
         self.assertRaises(ValueError, parse_size, ('12 BB'))
         self.assertRaises(ValueError, parse_size, ('12 BKB'))
-        self.assertRaises(ValueError, parse_size, ('12 K'))
         # Already rendered
         self.assertEqual(123, parse_size(123))
 

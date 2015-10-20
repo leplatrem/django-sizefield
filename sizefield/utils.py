@@ -15,7 +15,7 @@ if sys.version_info >= (3, 0):
 
 SIZEFIELD_FORMAT = getattr(settings, 'SIZEFIELD_FORMAT', '{value}{unit}')
 
-file_size_re = re.compile(r'^(?P<value>[0-9\.,]+?)\s*(?P<unit>([KMGTPEZY]?B)?)$', re.IGNORECASE)
+file_size_re = re.compile(r'^(?P<value>[0-9\.,]+?)\s*(?P<unit>[KMGTPEZY]?B?)$', re.IGNORECASE)
 FILESIZE_UNITS = {
     'B': 1,
     'KB': 1 << 10,
@@ -72,7 +72,9 @@ def parse_size(size):
     if r:
         clean_value = r.group("value").replace(",", ".")
         value = float(clean_value)
-        unit = r.group('unit').upper() or 'B'
+        unit = r.group('unit').upper()
+        if not unit.endswith('B'):
+            unit += 'B'
         return int(value * FILESIZE_UNITS[unit])
 
     # Regex pattern was not matched
