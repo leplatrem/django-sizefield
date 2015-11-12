@@ -37,4 +37,4 @@ after_success:
 matrix:
     exclude:
         - python: 3.4
-          env: DJANGO_VERSION=1.4.10
+          env: DJANGO_VERSION=1.4.22
