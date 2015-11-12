@@ -5,7 +5,7 @@ CHANGELOG
 0.9 (unreleased)
 ================
 
-- Nothing changed yet.
+- Add support for unitless values (#13, thanks @megapctr)
 
 
 0.8 (2015-10-04)
