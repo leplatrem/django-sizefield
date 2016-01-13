@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+import sys
 import re
 import operator
 
@@ -8,6 +9,9 @@ from django.utils import six
 from django.utils.translation import ugettext as _
 from django.conf import settings
 
+
+if sys.version_info >= (3, 0):
+    xrange = range
 
 SIZEFIELD_FORMAT = getattr(settings, 'SIZEFIELD_FORMAT', '{value}{unit}')
 
@@ -105,7 +109,7 @@ def parse_size(size, assume_binary=None):
     if assume_binary == None:
         assume_binary = SIZEFIELD_ASSUME_BINARY
 
-    r = file_size_re.match(size)
+    r = file_size_re.match(size.strip())
     if r:
         unit_size = r.group('unit_size').upper() or ''
         byte_suffix = r.group('byte_suffix') or ''

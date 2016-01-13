@@ -2,10 +2,22 @@
 CHANGELOG
 =========
 
-0.8 (unreleased)
-================
+0.10 (unreleased)
+=================
 
 - Nothing changed yet.
+
+
+0.9 (2015-11-12)
+================
+
+- Add support for unitless values (#13, thanks @megapctr)
+
+
+0.8 (2015-10-04)
+================
+
+- Add support for Python3 (thanks @naxube)
 
 
 0.7 (2015-03-13)
