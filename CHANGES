@@ -5,7 +5,7 @@ CHANGELOG
 0.10 (unreleased)
 =================
 
-- Nothing changed yet.
+- Fix lazy loading of translation infrastructure (#15, thanks @cemiarni).
 
 
 0.9 (2015-11-12)
