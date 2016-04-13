@@ -41,7 +41,8 @@ def filesizeformat(bytes, decimals=1):
     except (TypeError, ValueError, UnicodeDecodeError):
         raise ValueError
 
-    filesize_number_format = lambda value: formats.number_format(round(value, decimals), decimals)
+    def filesize_number_format(value):
+        return formats.number_format(round(value, decimals), decimals)
 
     units_list = sorted(six.iteritems(FILESIZE_UNITS), key=operator.itemgetter(1))
 
