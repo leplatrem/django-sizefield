@@ -1,6 +1,6 @@
 from django.db import models
 from django.core import exceptions
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 
 from sizefield.utils import parse_size
 from sizefield.widgets import FileSizeWidget
