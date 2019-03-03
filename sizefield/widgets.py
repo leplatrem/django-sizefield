@@ -6,13 +6,13 @@ from sizefield.utils import filesizeformat, parse_size
 
 class FileSizeWidget(forms.TextInput):
 
-    def render(self, name, value, attrs=None):
+    def render(self, name, value, attrs=None, renderer=None):
         if value:
             try:
                 value = filesizeformat(value)
             except ValueError:
                 pass
-        return super(FileSizeWidget, self).render(name, value, attrs)
+        return super(FileSizeWidget, self).render(name, value, attrs, renderer=renderer)
 
     def value_from_datadict(self, data, files, name):
         """
