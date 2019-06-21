@@ -5,7 +5,7 @@ CHANGELOG
 0.9.2 (unreleased)
 ==================
 
-- Nothing changed yet.
+- Fix support of Django 1.11/2
 
 
 0.9.1 (2016-04-13)
