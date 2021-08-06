@@ -43,7 +43,7 @@ def filesizeformat(bytes, decimals=1):
     def filesize_number_format(value):
         return formats.number_format(round(value, decimals), decimals)
 
-    units_list = sorted(iter(items(FILESIZE_UNITS)), key=operator.itemgetter(1))
+    units_list = sorted(FILESIZE_UNITS.items(), key=operator.itemgetter(1))
 
     value = unit = None
     len_unints_list = len(units_list)
