@@ -10,7 +10,6 @@ jobs:
     strategy:
       matrix:
         python-version: [3.6,3.7,3.8]
-
     steps:
       - uses: actions/checkout@v1
       - name: Setup python ${{ matrix.python-version }}
@@ -23,6 +22,15 @@ jobs:
           pip install tox tox-gh-actions
       - name: Test with tox
         run: tox
+  coverage:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup python 3.8
+        uses: actions/setup-python@v2
+        with:
+            python-version: 3.8
       - name: Coveralls
         uses: coverallsapp/github-action@1.1.3
         with:
