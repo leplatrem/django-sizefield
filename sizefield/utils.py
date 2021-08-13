@@ -5,7 +5,6 @@ import re
 import operator
 
 from django.utils import formats
-from django.utils import six
 from django.utils.translation import ugettext as _
 from django.conf import settings
 
@@ -44,7 +43,7 @@ def filesizeformat(bytes, decimals=1):
     def filesize_number_format(value):
         return formats.number_format(round(value, decimals), decimals)
 
-    units_list = sorted(six.iteritems(FILESIZE_UNITS), key=operator.itemgetter(1))
+    units_list = sorted(FILESIZE_UNITS.items(), key=operator.itemgetter(1))
 
     value = unit = None
     len_unints_list = len(units_list)
@@ -66,7 +65,7 @@ def parse_size(size):
     """
     @rtype int
     """
-    if isinstance(size, six.integer_types):
+    if isinstance(size, int):
         return size
 
     r = file_size_re.match(size.strip())

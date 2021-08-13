@@ -16,12 +16,6 @@ class QuickDjangoTest(object):
     http://stackoverflow.com/questions/3841725/how-to-launch-tests-for-django-reusable-app
     """
     DIRNAME = os.path.dirname(__file__)
-    INSTALLED_APPS = (
-        'django.contrib.auth',
-        'django.contrib.contenttypes',
-        'django.contrib.sessions',
-        'django.contrib.admin',
-    )
 
     def __init__(self, *args, **kwargs):
         self.apps = args
@@ -42,21 +36,18 @@ class QuickDjangoTest(object):
                     'PORT': '',
                 }
             },
-            INSTALLED_APPS=self.INSTALLED_APPS + self.apps,
+            INSTALLED_APPS= self.apps,
         )
 
-        if django.VERSION >= (1, 7, 0):
-            # see: https://docs.djangoproject.com/en/dev/releases/1.7/#standalone-scripts
-            django.setup()
-        if django.VERSION >= (1, 6, 0):
-            # see: https://docs.djangoproject.com/en/dev/releases/1.6/#discovery-of-tests-in-any-test-module
-            from django.test.runner import DiscoverRunner as Runner
-        else:
-            from django.test.simple import DjangoTestSuiteRunner as Runner
+        # Setup configuration
+        django.setup()
+
+        from django.test.runner import DiscoverRunner as Runner
 
         failures = Runner().run_tests(self.apps, verbosity=1)
         if failures:  # pragma: no cover
             sys.exit(failures)
+
 
 if __name__ == '__main__':
     """

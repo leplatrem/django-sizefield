@@ -2,6 +2,12 @@
 CHANGELOG
 =========
 
+2.0.0 (unreleased)
+==================
+
+- Dropped support for python 2
+- Dropped support for Django <2
+
 1.0.1 (unreleased)
 ==================
 
