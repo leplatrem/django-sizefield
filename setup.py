@@ -6,7 +6,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 
 setup(
     name='django-sizefield',
-    version='1.0.1.dev0',
+    version='2.0.0',
     author='Mathieu Leplatre',
     author_email='contact@mathieu-leplatre.info',
     url='https://github.com/leplatrem/django-sizefield',
@@ -18,6 +18,10 @@ setup(
     install_requires=[
         'Django',
     ],
+    tests_require=[
+        'tox'
+    ],
+    python_requires='>=3.5',
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
@@ -28,5 +32,9 @@ setup(
                  'Environment :: Web Environment',
                  'Framework :: Django',
                  'Development Status :: 5 - Production/Stable',
-                 'Programming Language :: Python :: 2.7'],
+                 'Programming Language :: Python :: 3.5',
+                 'Programming Language :: Python :: 3.6',
+                 'Programming Language :: Python :: 3.7',
+                 'Programming Language :: Python :: 3.8',
+                 ],
 )

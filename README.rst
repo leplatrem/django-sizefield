@@ -1,8 +1,9 @@
+
 *django-sizefield* is a file size field, stored as BigInteger and rendered
 with units in Bytes (KB, MB, ...)
 
-.. image:: https://travis-ci.org/leplatrem/django-sizefield.png
-    :target: https://travis-ci.org/leplatrem/django-sizefield
+.. image:: https://github.com/leplatrem/django-sizefield/actions/workflows/tests.yml/badge.svg
+    :target: https://github.com/leplatrem/django-sizefield/actions/workflows/tests.yml
 
 .. image:: https://coveralls.io/repos/leplatrem/django-sizefield/badge.png
     :target: https://coveralls.io/r/leplatrem/django-sizefield
