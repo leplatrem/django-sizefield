@@ -7,6 +7,7 @@ CHANGELOG
 
 - Dropped support for python 2
 - Dropped support for Django <2
+- Moved testing to GitHub Actions and tox
 
 1.0.1 (unreleased)
 ==================

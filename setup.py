@@ -21,6 +21,7 @@ setup(
     tests_require=[
         'tox'
     ],
+    python_requires='>=3.5',
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
