@@ -2,6 +2,11 @@
 CHANGELOG
 =========
 
+2.1.0 (2023-06-29)
+==================
+
+- Remove usage of removed functions in Django 4 (thanks @hagbarddenstore)
+
 2.0.0 (2020-08-13)
 ==================
 
